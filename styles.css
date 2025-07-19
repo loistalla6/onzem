@@ -1,0 +1,112 @@
+/* styles.css - Styles communs pour toutes les pages du site 11 Millions de Citoyens */
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #224f35 0%, #224f35 50%, #dc2626 100%);
+}
+
+.combat-card {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.combat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.layered-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: -8px;
+  bottom: -8px;
+  background: #f59e0b;
+  z-index: -1;
+  border-radius: 0.5rem;
+}
+.layered-card::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: -4px;
+  bottom: -4px;
+  background: #10b981;
+  z-index: -1;
+  border-radius: 0.5rem;
+}
+
+.btn-hover {
+  transition: all 0.3s ease;
+}
+.btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-contact {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Pour les citations dans les commentaires */
+.highlight-quote {
+  position: relative;
+  padding-left: 12px;
+}
+.highlight-quote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: #10b981;
+  border-radius: 3px;
+}
+
+/* Correction des conflits potentiels */
+/* Les classes utilitaires Tailwind priment, mais ces styles sont pour les cas personnalisés */
+
+/* Pour éviter les conflits de radius sur les grilles combats */
+.combat-card,
+.grid .combat-card {
+  border-radius: 0 !important;
+}
+
+/* Pour le radius spécial sur la dernière carte */
+.combat-card.radius-bottom-right {
+  border-bottom-right-radius: 50px !important;
+}
+
+/* Pour les overlays noirs sur les cartes combats */
+.combat-card .overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  pointer-events: none;
+}
+
+/* Pour les overlays individuels plus légers */
+.combat-card .overlay-light {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  pointer-events: none;
+}

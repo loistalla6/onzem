@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Combats - 11 Millions de Citoyens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#004d00',
+              secondary: '#cc0000',
+              tertiaire: '#224f35',
+              vert: '#00bf63',
+            },
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="accueil.html">
+                <img src="../image/logo.jpg" alt="Logo 11 Millions de Citoyens" class="w-16 h-16 object-contain" loading="lazy">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="accueil.html" class="text-primary hover:text-secondary font-medium transition-colors duration-200">ACCUEIL</a>
+                <a href="qui_sommes_nous.html" class="text-primary hover:text-secondary font-medium transition-colors duration-200">QUI SOMMES-NOUS ?</a>
+                <a href="#combats" class="bg-secondary text-white px-4 py-2 rounded-full font-medium hover:bg-primary transition-colors duration-200">NOS COMBATS</a>
+                <a href="#justice-sociale" class="text-primary hover:text-secondary font-medium transition-colors duration-200">JUSTICE SOCIALE</a>
+                <a href="#footer" class="text-primary hover:text-secondary font-medium transition-colors duration-200">CONTACT</a>
+                <button aria-label="Recherche" class="text-green-700 hover:text-green-800 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            
+            <button id="mobileMenuBtn" class="md:hidden text-gray-600 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center space-y-6 text-lg font-semibold uppercase">
+        <button id="closeMenuBtn" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+        <a href="index7.html" class="block text-primary hover:text-secondary px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">ACCUEIL</a>
+        <a href="qui_sommes_nous.html" class="block text-primary hover:text-secondary px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">QUI SOMMES-NOUS ?</a>
+        <a href="#combats" class="block bg-secondary text-white px-6 py-2 rounded-full font-medium hover:bg-primary transition-colors duration-200" onclick="closeMobileMenu()">NOS COMBATS</a>
+        <a href="#justice-sociale" class="block text-primary hover:text-secondary px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">JUSTICE SOCIALE</a>
+        <a href="#footer" class="block text-primary hover:text-secondary px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">CONTACT</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 sm:px-6 mt-6 fade-in">
+        <div class="gradient-bg rounded-3xl p-8 text-center shadow-xl">
+            <h1 class="text-2xl sm:text-4xl font-bold text-white mb-2">DÉCOUVREZ NOS COMBATS</h1>
+            <p class="text-green-100 text-sm sm:text-base">Pour la démocratie et la cohésion sociale</p>
+        </div>
+    </section>
+
+    <!-- Grid Combats avec image de fond -->
+    <section id="combats" class="container mx-auto px-4 sm:px-6 mt-8 fade-in" style="transition-delay: 0.1s">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-0">
+        <div class="relative overflow-hidden h-40 flex items-center justify-center text-center font-semibold text-white text-lg sm:text-xl cursor-pointer hover:opacity-90 transition-opacity duration-200" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../image/backgroung.jpg') center/cover no-repeat;">
+          <span class="relative z-10">JUSTICE SOCIALE</span>
+        </div>
+        <div class="relative overflow-hidden h-40 flex items-center justify-center text-center font-semibold text-white text-lg sm:text-xl cursor-pointer hover:opacity-90 transition-opacity duration-200" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../image/backgroung.jpg') center/cover no-repeat;">
+          <span class="relative z-10">RÉFORME DÉMOCRATIQUE</span>
+        </div>
+        <div class="relative overflow-hidden h-40 flex items-center justify-center text-center font-semibold text-white text-lg sm:text-xl cursor-pointer hover:opacity-90 transition-opacity duration-200" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../image/b3.jpg') center/cover no-repeat;">
+          <span class="relative z-10">BONNE GOUVERNANCE</span>
+        </div>
+        <div class="relative overflow-hidden h-40 flex items-center justify-center text-center font-semibold text-white text-lg sm:text-xl cursor-pointer hover:opacity-90 transition-opacity duration-200" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../image/b4.jpg') center/cover no-repeat;">
+          <span class="relative z-10">VULGARISATION POLITIQUE</span>
+        </div>
+        <div class="relative overflow-hidden h-40 flex items-center justify-center text-center font-semibold text-white text-lg sm:text-xl cursor-pointer hover:opacity-90 transition-opacity duration-200" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../image/b1.jpg') center/cover no-repeat;">
+          <span class="relative z-10">LUTTE CONTRE LA CORRUPTION</span>
+        </div>
+        <div class="relative overflow-hidden h-40 flex items-center justify-center text-center font-semibold text-white text-lg sm:text-xl cursor-pointer hover:opacity-90 transition-opacity duration-200" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../image/b2.jpg') center/cover no-repeat;">
+          <span class="relative z-10 text-yellow-400">REJOIGNEZ LE MOUVEMENT</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Card - JUSTICE SOCIALE -->
+    <section id="justice-sociale" class="mt-10 px-4 sm:px-8 fade-in" style="transition-delay: 0.2s">
+        <div class="flex flex-col md:flex-row relative bg-white shadow-lg overflow-visible rounded-lg combat-card">
+            <!-- Partie gauche avec superpositions -->
+            <div class="relative w-full md:w-[280px] min-h-[220px] flex-shrink-0 -ml-6">
+                <!-- Superpositions : Jaune au fond -->
+                <div class="absolute top-6 left-6 w-[105%] h-[105%] bg-yellow-400 z-0 rounded-lg"></div>
+                <!-- Vert clair au milieu -->
+                <div class="absolute top-3 left-3 w-[102%] h-[102%] bg-green-400 z-10 rounded-lg"></div>
+                <!-- Rouge devant -->
+                <div class="absolute top-0 left-0 w-[100%] h-[100%] bg-red-600 z-20 rounded-lg"></div>
+
+                <!-- Bloc principal vert foncé par-dessus -->
+                <div class="relative z-30 bg-[#00291C] text-white h-full p-5 flex flex-col justify-between rounded-lg">
+                    <h3 class="text-yellow-400 font-bold text-lg">JUSTICE SOCIALE</h3>
+                    <div class="space-y-2 mt-6">
+                        <a href="#" class="block bg-secondary text-center font-bold py-1 rounded btn-hover">FAITES UN DON</a>
+                        <a href="#" class="block bg-primary text-center font-bold py-1 rounded btn-hover text-white">NOS ACTIONS</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partie droite : contenu texte -->
+            <div class="w-full bg-white p-6 text-sm text-gray-800 z-10 border-t md:border-t-0 md:border-l border-gray-200 rounded-r-lg">
+                <p class="text-green-700 font-semibold mb-2">Notre Combat pour la Justice Sociale</p>
+                <p class="text-gray-600">
+                    La justice sociale est le pilier fondamental de toute société équitable et prospère. Nos actions s'articulent autour de la lutte contre les inégalités, la promotion des droits humains et la solidarité entre les citoyens. Nous œuvrons pour que chaque individu ait accès aux mêmes opportunités, dans le respect de sa dignité.
+                </p>
+                <a href="#" class="inline-block mt-4 px-4 py-2 bg-primary text-white rounded-md font-semibold btn-hover text-sm">EN SAVOIR PLUS</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-gradient-to-r from-primary to-secondary text-white pt-8 pb-12 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Newsletter -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Newsletter</h3>
+                    <div class="flex flex-col sm:flex-row">
+                        <input type="email" placeholder="Entrez votre email" class="flex-grow px-4 py-3 rounded-t-lg sm:rounded-tr-none sm:rounded-l-lg focus:outline-none text-gray-800">
+                        <button class="px-6 py-3 bg-secondary rounded-b-lg sm:rounded-bl-none sm:rounded-r-lg font-semibold btn-hover text-white">S'INSCRIRE</button>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-contact p-6 rounded-lg fade-in" style="transition-delay: 0.1s">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Contactez-nous</h3>
+                    <div class="space-y-2 text-white">
+                        <p><i class="fas fa-phone mr-2"></i> (+237) 23 45 67 89</p>
+                        <p><i class="fas fa-envelope mr-2"></i> contact@11millioncitoyens.org</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i> Yaoundé, Cameroun</p>
+                    </div>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-white hover:text-yellow-300 text-xl transition-colors duration-200"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-yellow-300 text-xl transition-colors duration-200"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-yellow-300 text-xl transition-colors duration-200"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-yellow-300 text-xl transition-colors duration-200"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-white/20 text-center " >
+                <p class="text-white">© 2025 11 Millions de Citoyens. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 btn-hover">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Animation au scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementPosition < windowHeight - elementVisible) {
+                    element.classList.add('animate');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>

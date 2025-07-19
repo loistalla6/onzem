@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11 Millions de Citoyens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    :root {
+      --primary: #006837;
+      --secondary: #cc0000;
+      --accent: #00bf63;
+      --light: #ffffff;
+      --dark: #001a0d;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body, html {
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* Background Image avec Overlay */
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-image: url('./image/backgroung.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(0, 58, 27, 0.85), 
+        rgba(0, 70, 32, 0.85), 
+        rgba(230, 0, 0, 0.85));
+      z-index: -1;
+    }
+    
+    /* Canvas 3D en arrière-plan */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+    }
+    
+    .content-wrapper {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      z-index: 1;
+    }
+    
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      width: 100%;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      position: relative;
+    }
+    
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2rem;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+    
+    .nav-links a:hover::before {
+      transform: scale(1);
+    }
+    
+    .nav-links .cta {
+      background: var(--secondary);
+      padding: 0.5rem 1.5rem;
+      box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3);
+    }
+    
+    .nav-links .cta:hover {
+      background: #e60000;
+      transform: translateY(-2px);
+    }
+    
+    /* Contenu principal */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem 0;
+    }
+    
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+    }
+    
+    .hero-image {
+      flex: 1;
+      position: relative;
+      max-width: 600px;
+    }
+    
+    /* Typographie avec surlignage visible */
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--light);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards 0.3s;
+    }
+    
+    .highlight {
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(to right, var(--light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: rgba(0, 191, 99, 0.3);
+      z-index: -1;
+      border-radius: 3px;
+      transform: scaleX(0.95);
+      transition: all 0.3s ease;
+    }
+    
+    .highlight:hover::after {
+      height: 12px;
+      background: rgba(0, 191, 99, 0.5);
+      transform: scaleX(1);
+    }
+    
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards 0.6s;
+      font-weight: 300;
+    }
+    
+    /* Boutons */
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards 0.9s;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      font-weight: 600;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: none;
+      min-width: 180px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: var(--dark);
+      box-shadow: 0 4px 15px rgba(0, 191, 99, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 191, 99, 0.4);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--light);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-3px);
+    }
+    
+    /* Logo 3D */
+    .logo-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      perspective: 1000px;
+    }
+    
+    .logo-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .logo-3d img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    }
+    
+    /* Effets de particules */
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotateX(5deg) rotateY(5deg);
+      }
+      50% {
+        transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .main-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+      }
+      
+      .hero-text {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .buttons {
+        justify-content: center;
+      }
+      
+      h1 {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .content-wrapper {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+      }
+      
+      .btn {
+        padding: 0.8rem 1.5rem;
+        min-width: 150px;
+      }
+      
+      .nav-links {
+        gap: 0.8rem;
+      }
+      
+      .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+      
+      .logo-container {
+        height: 300px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .background-image {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Image -->
+  <div class="background-image"></div>
+  <div class="overlay"></div>
+  
+  <!-- Canvas 3D -->
+  <div id="canvas-container"></div>
+  
+  <!-- Effet de particules -->
+  <div class="particles" id="particles-js"></div>
+  
+  <div class="content-wrapper">
+    <nav class="navbar">
+      <img src="./image/logo.jpg" alt="Logo" style="height: 50px; border-radius: 50%;">
+      <ul class="nav-links">
+        <li><a href="./assets/accueil.html">Accueil</a></li>
+        <li><a href="./assets/qui_sommes_nous.html">À propos</a></li>
+        <li><a href="./assets/nos_combats.html" class="cta">Nos combats</a></li>
+      </ul>
+    </nav>
+
+    <div class="main-content">
+      <div class="hero-text">
+        <h1><span class="highlight">11 Millions</span> de Citoyens Engagés</h1>
+        <p>
+          Association politique à but non lucratif, notre mission est de moraliser les masses camerounaises sur leurs devoirs et droits civiques pour améliorer la qualité des citoyens et des scrutins.
+        </p>
+        <div class="buttons">
+          <a href="./assets/accueil.html" class="btn btn-primary">REJOIGNEZ-NOUS</a>
+          <a href="./assets/qui_sommes_nous.html" class="btn btn-secondary">EN SAVOIR PLUS</a>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <div class="logo-container">
+          <div class="logo-3d">
+            <img src="./image/logo.jpg" alt="Logo 3D">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialisation de la scène 3D
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+    
+    // Création d'une forme géométrique pour le fond
+    const geometry = new THREE.IcosahedronGeometry(2, 1);
+    const material = new THREE.MeshStandardMaterial({ 
+      color: 0x006837,
+      metalness: 0.7,
+      roughness: 0.3,
+      transparent: true,
+      opacity: 0.05
+    });
+    const shape = new THREE.Mesh(geometry, material);
+    scene.add(shape);
+    
+    // Ajout de lumières
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    scene.add(ambientLight);
+    
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(1, 1, 1);
+    scene.add(directionalLight);
+    
+    // Position de la caméra
+    camera.position.z = 5;
+    
+    // Animation
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      shape.rotation.x += 0.001;
+      shape.rotation.y += 0.002;
+      
+      renderer.render(scene, camera);
+    }
+    
+    animate();
+    
+    // Redimensionnement
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    // Effet de particules
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'absolute';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      document.querySelector('.particles').appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      const particles = [];
+      const particleCount = window.innerWidth < 768 ? 30 : 60;
+      
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1,
+          speedX: Math.random() * 0.5 - 0.25,
+          speedY: Math.random() * 0.5 - 0.25,
+          color: `rgba(0, 191, 99, ${Math.random() * 0.4 + 0.1})`
+        });
+      }
+      
+      function updateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          
+          p.x += p.speedX;
+          p.y += p.speedY;
+          
+          if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        }
+        
+        requestAnimationFrame(updateParticles);
+      }
+      
+      updateParticles();
+      
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+      
+      // Animation au scroll
+      const animateElements = document.querySelectorAll('h1, p, .buttons');
+      
+      const animateOnScroll = () => {
+        animateElements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (elementPosition < windowHeight - 100) {
+            element.style.animationPlayState = 'running';
+          }
+        });
+      };
+      
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll();
+    });
+  </script>
+</body>
+</html>

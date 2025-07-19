@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11 Millions qui sommes nous</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header (copie de la page d'accueil) -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+    <a href="accueil.html">
+      <img src="../image/logo.jpg" alt="Logo 11 Millions de Citoyens" class="w-16 h-16 object-contain" loading="lazy">
+    </a>
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="accueil.html" class="text-[#004d00] hover:text-[#FFD600] font-medium transition-colors duration-200">ACCUEIL</a>
+      <a href="qui_sommes_nous.html" class=" text-white bg-[#cc0000] hover:text-[#FFD600] rounded-full px-4 py-2 font-medium transition-colors duration-200">QUI SOMMES-NOUS ?</a>
+      <a href="nos_combats.html" class="text-[#004d00] font-medium hover:text-[#FFD600] transition-colors duration-200">NOS COMBATS</a>
+      <a href="medias.html" class="text-[#004d00] font-medium hover:text-[#FFD600] transition-colors duration-200">MÉDIAS</a>
+      <a href="evenement.html" class="text-[#004d00] font-medium hover:text-[#FFD600] transition-colors duration-200">ÉVÉNEMENTS</a>
+      <a href="actualite.html" class="text-[#004d00] font-medium hover:text-[#FFD600] transition-colors duration-200">ACTUALITÉS</a>
+      <button aria-label="Recherche" class="text-green-700 hover:text-green-800 transition-colors duration-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+    </div>
+    <button id="mobileMenuBtn" class="md:hidden text-gray-600 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</nav>
+<div id="mobileMenu" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center space-y-6 text-lg font-semibold uppercase">
+  <button id="closeMenuBtn" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+  <a href="accueil.html" class="block text-[#004d00] hover:text-[#FFD600] px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">ACCUEIL</a>
+  <a href="qui_sommes_nous.html" class="block text-[#004d00] hover:text-[#FFD600] px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">QUI SOMMES-NOUS ?</a>
+  <a href="nos_combats.html" class="block text-[#004d00] hover:text-[#FFD600] px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">NOS COMBATS</a>
+  <a href="commentaire.html" class="block text-[#004d00] hover:text-[#FFD600] px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">COMMENTAIRES</a>
+  <a href="faire-un-don.html" class="block text-[#004d00] hover:text-[#FFD600] px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">FAIRE UN DON</a>
+  <a href="medias.html" class="block text-[#004d00] hover:text-[#FFD600] px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">MÉDIAS</a>
+  <a href="evenement.html" class="block text-[#004d00] hover:text-[#FFD600] px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">ÉVÉNEMENTS</a>
+  <a href="actualite.html" class="block text-[#004d00] hover:text-[#FFD600] px-6 py-2 rounded transition-colors duration-200" style="background:transparent;" onclick="closeMobileMenu()">ACTUALITÉS</a>
+</div>
+<!-- 
+cadre principal -->
+  <div class="relative w-full max-w-6xl mx-auto mt-6">
+  <!-- Première div (arrière-plan avec titre) -->
+  <div class="bg-[url('../image/backgroung.jpg')] bg-cover bg-center max-w-6xl rounded-3xl p-8 text-center relative h-[300px] sm:h-[400px] md:h-[450px] border-4 border-gray-700 flex items-center justify-center">
+    <h1 class="text-4xl sm:text-5xl md:text-5xl font-bold text-white drop-shadow-lg" style="background:rgba(0,77,0,0.7); padding:1rem 2rem; border-radius:2rem;">Qui sommes-nous ?</h1>
+  </div>
+
+  <!-- Deuxième div (contenu texte) positionnée en absolute avec un décalage vers le bas -->
+  <div class="absolute left-1/2 transform -translate-x-1/2 w-[98%] sm:w-[92%] md:w-[92%] bottom-[-240px] p-8 rounded-2xl border-4 border-gray-700" style="background: url('../image/b1.jpg') center/cover no-repeat;">
+    <p class="text-white text-xl leading-relaxed mt-12">
+      <strong class="text-white">11 Millions de Citoyens</strong> est une association à but non lucratif, née de la conviction profonde que l'avenir du Cameroun repose sur la qualité et l'engagement de ses citoyens.
+      Nous sommes une voix collective dédiée à l'éveil des consciences, œuvrant sans relâche pour moraliser les masses camerounaises sur leurs devoirs et droits civiques.
+      Notre ambition est de forger une citoyenneté éclairée et active, capable de contribuer pleinement à la construction d'une nation plus juste, plus transparente et plus prospère pour tous. 
+      Nous croyons en la force du nombre et en la puissance de l'engagement individuel pour transformer collectivement.
+    </p>
+  </div>
+</div>
+    
+    
+  <!-- Mission -->
+  <section class="max-w-6xl mx-auto space-y-1 text-justify-center p-3 mt-64">
+    <h2 class="text-xl font-bold text-green-600 mt-8">Notre Mission : Instaurer une Nouvelle Ère Politique</h2>
+    <p class="mb-2 mt-4">
+      Notre mission fondamentale est d’instaurer une nouvelle ère de la politique au Cameroun.
+      une ère caracterisée par la Participation, la responsabilité et linnovation. Pour y parvenir, 
+      nousaccentuons résolument nos actions en direction des jeunes. Nous nous engageons à leurfournir 
+      les outils, les connaissances et les plateformes necessaires pour quil puissent participer de facon 
+      effective et significcative au devenir politique de la nation. Nous sommes convaincus que la jeunesse 
+      nest pas seulement lavenir, mais aussi le présent de notre démocratie, eu quelle détient la clé des 
+      transformations necessaires.    </p>
+  </section>
+
+  <!-- Objectifs -->
+  <section class="max-w-6xl mx-auto space-y-1 text-justify-center p-3 ">
+    <h2 class="text-xl font-bold text-green-600 mt-8">Nos Objectifs Clés : Éduquer et Mobiliser la Jeunesse</h2>
+    <ul class="list-disc list-inside space-y-3 mt-4">
+      <li><span class="font-semibold">Vulgariser l'Affaire Politique en Milieu Jeune</span> : Rendre les concepts 
+        et enjeux politiques accessibles, compréhensibles et pertinents pour les jeunes, en brisant les barrières 
+        de la complexité et de lindifférence. Nous voulond montrer que la politique est laffaire de tous auelle 
+        impacte directament leur quotidient.</li>
+      <li><span class="font-semibold">Initier une Participation Massive au Scrutins</span class="font-semibold"> : 
+        Encourager activement les jeunes à sincrire sur les listes électorales et à participer massivement aux scrutins, 
+        en les sensibilisant à limportance de leur voix et de leur vote comme leviers de changement démocratique.</li>
+    </ul>
+  </section>
+
+  <!-- Histoire -->
+  <section class="max-w-6xl mx-auto bg-[#e0f2f1] p-4 rounded-md border-l-4 border-red-500  mt-2">
+    <h2 class="text-red-600 font-bold text-lg mb-2 mt-8">Notre Histoire</h2>
+    <p class="text-sm mt-4">
+      Un Élan pour la Politique Camerounaise depuis 2018<br>
+      L'association 11 Million de Citoyens a été officiellement créée en 2018 sous l'impulsion de l'Honorable 
+      Cabral Libile. Face aux defis de lengqge,ent civique et à la nécessité de renouveler le paysage politique 
+      camerounais, l'Honerable Libile a fondé cette organisation avec la vision de donner un nouvel élan à la politique 
+      du pays. Depuis sa creation, 11 Milion de citoyens sest imposée comme une force motrice, travaillant sans relache à 
+      éduquer, mobiliser et autonomiser les citoyens, en particulier la jeunesse, pour qu'ils deviennent les architectes de leur propre destin et les garants dune démocratie vibrante et juste.</p>
+  </section>
+
+  <!-- Boutons -->
+  <div class="flex justify-center space-x-6 mt-16 mb-6">
+    <button class="bg-red-600 text-white font-bold px-10 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-red-700">DOCUMENTS</button>
+    <button class="bg-yellow-400 text-white font-bold px-10 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-yellow-500">REJOINDRE</button>
+  </div>
+
+  <!-- Footer (copie de la page d'accueil) -->
+<footer id="footer" class="text-white pt-8 pb-12 mt-12" style="background: url('../image/backgrounfooter.jpg') center/cover no-repeat;">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Newsletter -->
+      <div class="fade-in">
+        <h3 class="text-2xl font-bold mb-4 text-white">Newsletter</h3>
+        <div class="flex flex-col sm:flex-row">
+          <input type="email" placeholder="Entrez votre email" class="flex-grow px-4 py-3 rounded-t-lg sm:rounded-tr-none sm:rounded-l-lg focus:outline-none text-gray-800">
+          <button class="px-6 py-3 bg-[#cc0000] rounded-b-lg sm:rounded-bl-none sm:rounded-r-lg font-semibold btn-hover text-white">S'INSCRIRE</button>
+        </div>
+      </div>
+      <!-- Contact -->
+      <div class="footer-contact p-6 rounded-lg fade-in" style="transition-delay: 0.1s">
+        <h3 class="text-2xl font-bold mb-4 text-white">Contactez-nous</h3>
+        <div class="space-y-2 text-white">
+          <p><i class="fas fa-phone mr-2"></i> (+237) 23 45 67 89</p>
+          <p><i class="fas fa-envelope mr-2"></i> contact@11millioncitoyens.org</p>
+          <p><i class="fas fa-map-marker-alt mr-2"></i> Yaoundé, Cameroun</p>
+        </div>
+        <div class="mt-4 flex space-x-4">
+          <a href="#" class="text-white hover:text-[#FFD600] text-xl transition-colors duration-200"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white hover:text-[#FFD600] text-xl transition-colors duration-200"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white hover:text-[#FFD600] text-xl transition-colors duration-200"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white hover:text-[#FFD600] text-xl transition-colors duration-200"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/20 text-center " >
+      <p class="text-white">© 2025 11 Millions de Citoyens. Tous droits réservés.</p>
+      <div class="mt-2 flex justify-center space-x-4">
+        <a href="mentions-legales.html" class="text-white hover:text-[#FFD600] text-sm">Mentions légales</a>
+        <a href="politique-confidentialite.html" class="text-white hover:text-[#FFD600] text-sm">Politique de confidentialité</a>
+        <a href="conditions-utilisation.html" class="text-white hover:text-[#FFD600] text-sm">Conditions d'utilisation</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+// Animation au scroll
+const animateOnScroll = () => {
+  const elements = document.querySelectorAll('.fade-in');
+  const windowHeight = window.innerHeight;
+  elements.forEach(element => {
+    const elementPosition = element.getBoundingClientRect().top;
+    const elementVisible = 150;
+    if (elementPosition < windowHeight - elementVisible) {
+      element.classList.add('animate');
+    }
+  });
+};
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('load', animateOnScroll);
+// Mobile menu functionality
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenu.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+});
+closeMenuBtn.addEventListener('click', () => {
+  mobileMenu.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+});
+function closeMobileMenu() {
+  mobileMenu.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+</script>
+</body>
+</html>

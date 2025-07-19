@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11 Millions de Citoyens</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+</head>
+
+<body class="bg-gray-90 font-sans">
+  <!-- Actualités -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #fff;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#" onclick="window.history.back(); return false;">
+        <span class="me-2 fs-2 text-danger"><i class="fas fa-times"></i></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="flex items-center space-x-2">
+          <img src="../image/logo.jpg" alt="Association Logo" class="h-10 w-10" loading="lazy">
+        </div>
+    </div>
+  </nav>
+
+  <div class="text-red px-6 py-4 relative rounded-xl max-w-2xl mx-auto mb-6">
+    <h1 class="text-[40px] font-bold text-green-800 text-center">
+      Actualités et Commentaires
+    </h1>
+  </div>
+
+  <div class="bg-gray-90 px-4 py-10 space-y-10 max-w-5xl mx-auto">
+    <!-- ACTUALITÉ 1 -->
+    <div class="bg-green-490 bg-green-100 rounded-xl p-4 space-y-4 shadow-md">
+      <div class="bg-green-90 rounded-xl p-4 space-y-3">
+        <div class="md:flex md:gap-6">
+          <!-- Image principale -->
+          <div class="flex-shrink-0">
+            <img src="ord1.jpg" alt="Actualité 2" class="w-63 h-82 object-cover rounded-xl" />
+            <!-- Miniatures -->
+            <p class="text-green-600 text-sm mt-2">
+              Autres images liees a cette actualite
+            </p>
+            <div class="flex gap-2 mt-4">
+              <img src="ord1.jpg" class="w-20 h-20 rounded-md object-cover" alt="photo" />
+              <img src="ord1.jpg" class="w-20 h-20 rounded-md object-cover" alt="photo" />
+            </div>
+          </div>
+
+          <!-- Contenu -->
+          <div class="flex-1 mt-6 lg:mt-0 space-y-3 text-base text-gray-800">
+            <h3 class="text-green-600 text-xl font-bold">Actualites 2</h3>
+            <p class="text-sm text-gray-500">Publié le 5 juillet 2025</p>
+            <p class="leading-snug">
+              <strong>Progrès Significatifs dans la Protection des Droits de la
+                Femme au Cameroun</strong><br />
+              Le Cameroun a récemment franchi des étapes importantes dans
+              l'amélioration des droits des femmes, témoignant d'une volonté
+              politique croissante de promouvoir l'égalité des sexes et de
+              lutter contre les discrimination.Des initiatives législatives et
+              des programmes de sensibilisation ont été mis en place pour
+              renforcer la participation des femmes à la vie publique,
+              économique et sociale. On pbserve une augmentation progressive
+              de la representation féminine dans les sphères de la décision;
+              meme si des défis persistent. Ces avancées sont le fruit dun
+              travail collaboratif entre le gouvernement; les organisations de
+              la société civile et les partenaire internationaux; qui œuvres
+              ensemble pour une meilleure autonomisation des femmes et la
+              reconnaissance pleine et entière de leurs droits fondamentaux.
+            </p>
+            <div class="mt-1">
+              <a href="#"
+                class="inline-block bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700 transition">
+                Lire plus
+              </a>
+            </div>
+
+            <!-- Boutons -->
+            <div class="flex flex-wrap gap-3 mt-4">
+              <button
+                class="bg-green-700 text-white lg:text-base text-sm px-6 py-2 hover:bg-green-800 transition rounded-md"
+                onclick="toggleCommentForm(this)">
+                LAISSEZ UN COMMENTAIRE
+              </button>
+              <button
+                class="bg-yellow-600 text-white lg:text-base text-sm px-4 py-2 hover:bg-yellow-700 transition rounded-md">
+                COMMENTAIRES
+              </button>
+            </div>
+            <!-- Formulaire commentaire caché -->
+            <form class="comment-form hidden w-full mt-4" onsubmit="submitComment(event)" autocomplete="off">
+              <textarea name="comment" rows="3" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 resize-none text-base" placeholder="Votre commentaire..."></textarea>
+              <div class="flex justify-end mt-2">
+                <button type="submit" class="bg-green-700 text-white px-6 py-2 rounded-md text-sm">Envoyer</button>
+              </div>
+            </form>
+  <script>
+    // Affiche ou cache le formulaire sous le bon bouton
+    function toggleCommentForm(btn) {
+      const parent = btn.closest('.space-y-3');
+      const form = parent.querySelector('.comment-form');
+      if (form) {
+        form.classList.toggle('hidden');
+        if (!form.classList.contains('hidden')) {
+          form.querySelector('textarea').focus();
+        }
+      }
+    }
+    // Soumission du commentaire
+    function submitComment(e) {
+      e.preventDefault();
+      alert('Votre commentaire a bien été envoyé !');
+      e.target.reset();
+      e.target.classList.add('hidden');
+    }
+  </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTUALITÉ 2 -->
+    <div class="bg-green-490 bg-green-100 rounded-xl p-4 space-y-4 shadow-md max-w-5xl mx-auto">
+      <div class="bg-green-90 rounded-xl p-4 space-y-3">
+        <div class="md:flex md:gap-6">
+          <!-- Image principale -->
+          <div class="flex-shrink-0">
+            <img src="ord1.jpg" alt="Actualité 2" class="w-63 h-82 object-cover rounded-xl" />
+            <!-- Miniatures -->
+            <p class="text-green-600 text-sm mt-2">
+              Autres images liees a cette actualite
+            </p>
+            <div class="flex gap-2 mt-4">
+              <img src="ord1.jpg" class="w-20 h-20 rounded-md object-cover" alt="photo" />
+              <img src="ord1.jpg" class="w-20 h-20 rounded-md object-cover" alt="photo" />
+            </div>
+          </div>
+
+          <!-- Contenu -->
+          <div class="flex-1 mt-6 lg:mt-0 space-y-3 text-base text-gray-800">
+            <h3 class="text-green-600 text-xl font-bold">Actualites 2</h3>
+            <p class="text-sm text-gray-500">Publié le 5 juillet 2025</p>
+            <p class="leading-snug">
+              <strong>L'Enfance Camerounaise au Cœur des Priorités :</strong>
+              <br />
+              Des Avancées Notables et des Défis Persistants Notables et des
+              Défis Persistants La protection et l'épanouissement des enfants
+              constituent également un axe majeur des politiaues publiques au
+              Cameroun. D'importants efforts ont été déployés pour garantir
+              l'accès à l'éducation; à la santé et à un envirenement sur pour
+              chaque enfant; avec des campagnes de vaccination massives et des
+              programmes de lutte contre le travail des enfants. Cependant, la
+              persistance de certaines pratiques traditionnelles néfastes; les
+              conséquences des crises humanitaires dans certaines régions; et
+              les inégalités d'accès aux services de base représentent encore
+              des obstacles majeurs. Le pays reste mobilisé pour consolider
+              ces acquis, renforcer les mecanismes de protection de l'enfance
+              et s'assurer que chaque jeune Camerounais puisse grandir dans un
+              environneùent propice à son plein développement...
+            </p>
+            <div class="mt-1">
+              <a href="#"
+                class="inline-block bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700 transition">
+                Lire plus
+              </a>
+            </div>
+
+            <!-- Boutons -->
+            <div class="flex flex-wrap gap-3 mt-4">
+              <button
+                class="bg-green-700 text-white lg:text-base text-sm px-6 py-2 hover:bg-green-800 transition rounded-md"
+                onclick="toggleCommentForm(this)">
+                LAISSEZ UN COMMENTAIRE
+              </button>
+              <button
+                class="bg-yellow-600 text-white lg:text-base text-sm px-4 py-2 hover:bg-yellow-700 transition rounded-md">
+                COMMENTAIRES
+              </button>
+            </div>
+            <!-- Formulaire commentaire caché -->
+            <form class="comment-form hidden w-full mt-4" onsubmit="submitComment(event)" autocomplete="off">
+              <textarea name="comment" rows="3" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 resize-none text-base" placeholder="Votre commentaire..."></textarea>
+              <div class="flex justify-end mt-2">
+                <button type="submit" class="bg-green-700 text-white px-6 py-2 rounded-md text-sm">Envoyer</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
